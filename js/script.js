@@ -8,6 +8,7 @@ function createIssue(repo, assignee, title, body ) {
   var url = "https://api.github.com/repos/" + assignee + "/" + repo + "/" + "issues";
   var myData = {title: title, body: body};
   //console.log(myData);
+  var myLink = "<a href=" + url + ">" + title + "</a>";
   
 
   $.ajax({
@@ -18,8 +19,8 @@ function createIssue(repo, assignee, title, body ) {
   })
 
   //.done(handleResponse(response))
-  .done(function(res) {
-    handleResponse(res);
+  .done(function(myLink) {
+    handleResponse(myLink);
   })
   //.fail(handleError(xhr, textStatus, errorThrown));
   .fail(function(xhr, textStatus, errorThrown){
@@ -28,11 +29,11 @@ function createIssue(repo, assignee, title, body ) {
 }
 
 function handleResponse(response){
-  console.log('response', response);
+  $('#issue').append('response', response);//('response', response);
 }
 
 function handleError(xhr, status, error) {
-  console.log(xhr.responseText);
+  console.log("Post " + status + ": " + error);
 }
  
 
