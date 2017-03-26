@@ -19,8 +19,8 @@ function createIssue(repo, assignee, title, body ) {
   })
 
   //.done(handleResponse(response))
-  .done(function(myLink) {
-    handleResponse(myLink);
+  .done(function(responseText) {
+    handleResponse(responseText);
   })
   //.fail(handleError(xhr, textStatus, errorThrown));
   .fail(function(xhr, textStatus, errorThrown){
@@ -28,8 +28,8 @@ function createIssue(repo, assignee, title, body ) {
   })
 }
 
-function handleResponse(response){
-  $('#issue').append('response', response);//('response', response);
+function handleResponse(text){
+  $('#issue').append(text.title);//('response', response);
 }
 
 function handleError(xhr, status, error) {
